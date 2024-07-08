@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="in">
+
+<head>
+    <title>AnimeXtrike</title>
+    <link rel="stylesheet" type="text/css" href="asset/css/style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="exhibition" id="catalogo">
+        <div class="header">
+            <div class="hbox">
+                <input type="checkbox" name="" id="chk1">
+                <input type="checkbox" name="" id="chk2">
+                <div class="logo">
+                    <a href="home/index">
+                        <h1>Anime<span>Oyahoo</span></h1>
+                        <h3>GOZAIMAS</h3>
+                    </a>
+                </div>
+                <form action="<?=base_URL?>directorio/consulta" method="POST" class="search">
+                    <input type="text" name="busqueda" placeholder="Buscar...">
+                    <button type="submit" name="search"><i class='bx bx-search'></i></button>
+                </form>
+                <ul>
+                    <li><a href="<?=base_URL?>home/index" class="menu_a">INICIO</a></li>
+                    <li><a href="<?=base_URL?>directorio/catalogo" class="menu_a">DIRECTORIO</a></li>
+                    <li>
+                        <label for="chk2" class="btn_login">LOGIN</label>
+                    </li>
+                    <li>
+                        <a href=""><i class='bx bxl-facebook'></i></a>
+                        <a href=""><i class='bx bxl-instagram'></i></a>
+                        <a href=""><i class='bx bxl-twitter'></i></a>
+                    </li>
+                </ul>
+                <div class="menu">
+                    <label for="chk1">
+                        <i class='bx bx-menu'></i>
+                    </label>
+                </div>
+
+                <div class="login">
+                    <?php if(!isset($_SESSION['identity']) && !isset($_SESSION['admin'])):?>
+                    <h2>INICIAR SESION </h2>
+                    <form action="<?=base_URL?>home/login" method="POST">
+                        <input type="email" name="email" placeholder="Correo Electronico">
+                        <input type="password" name="password" placeholder="Contraseña">
+                        <input type="submit" value="INICIAR SESSION" class="btn_session">
+                        <ul>
+                            <li><a href="<?=base_URL?>home/registro" class="a_register">Registrate</a></li>
+                            <li><a href="" class="a_olvido">Olvidaste la contraseña?</a></li>
+                        </ul>
+                    </form>
+                    <?php elseif(isset($_SESSION['identity']) && $_SESSION['admin'] == true): ?>
+                    <h2>Bienvenido Administrador</h2>
+                    <div class="admin">
+                        <a href="<?=base_URL?>directorio/new">Nuevo Anime</a>
+                        <a href="<?=base_URL?>directorio/filtro">Eliminar Anime</a>
+                        <a href="<?=base_URL?>episode/new">Agregar Episodes</a>
+                    </div>
+                    <a href="<?=base_URL?>home/logout" class="btn_logout">CERRAR SESSION</a>
+                    <?php else:?>
+                    <h2>Bienvenido usuario</h2>
+                    <a href="<?=base_URL?>home/logout" class="btn_logout">CERRAR SESSION</a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item active">
+            <img src="asset/img/portadas/arifureta3.jpe" alt="Imagen 1">
+            <div class="expensive">
+                <h1>Arifureta</h1>
+                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, non modi! Quia, qui accusamus.
+                    Veritatis maxime fuga vitae unde eum ex odit, officia dolorum repellendus pariatur vero. Qui, ut
+                    culpa.</h3>
+                <div class="btn">
+                    <a href="">VER ANIME</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="asset/img/portadas/date a live2.jpg" alt="Imagen 2">
+            <div class="expensive">
+                <h1>Date A Live</h1>
+                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, non modi! Quia, qui accusamus.
+                    Veritatis maxime fuga vitae unde eum ex odit, officia dolorum repellendus pariatur vero. Qui, ut
+                    culpa.</h3>
+                <div class="btn">
+                    <a href="">VER ANIME</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="asset/img/portadas/seishun buta yarou2.jpg" alt="Imagen 3">
+            <div class="expensive">
+                <h1>Seishun buta yarou</h1>
+                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, non modi! Quia, qui accusamus.
+                    Veritatis maxime fuga vitae unde eum ex odit, officia dolorum repellendus pariatur vero. Qui, ut
+                    culpa.</h3>
+                <div class="btn">
+                    <a href="">VER ANIME</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="buttons" class="buttons">
+            <button id="prevButton" class="prev"><i class='bx bx-chevrons-left'></i></button>
+            <button id="nextButton" class="next"><i class='bx bx-chevrons-right'></i></button>
+        </div>
+    </div>
+
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-section">
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/arifureta3.jpe">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/date a live2.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/RE_zero.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/DBZ3.avif">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/seishun buta yarou2.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-section">
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/shadow-garden.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/sao.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/rakudai kishi2.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/tate-no-yuusha.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/akame10.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-section">
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/Go-toubun.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/rakudai kishi3.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/sao3.webp">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/akame3.jpg">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+                <div class="covers">
+                    <a href="">
+                        <img src="asset/img/portadas/shingeki no kyojin2.avif">
+                        <h1>nombre</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+<script src="js/script.js"></script>
